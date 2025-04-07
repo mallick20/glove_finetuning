@@ -49,8 +49,8 @@ class MLMDataset(Dataset):
 
 
 # Load WikiText-2 dataset
-def load_wikitext2():
-    dataset = load_dataset("wikitext", "wikitext-2-v1", split="train")
+def load_wikitext2(dataset_name = "wikitext-2-v1", sample=1):
+    dataset = load_dataset("wikitext",dataset_name, split=f"train[:{int(sample*100)}%]")
     text_data = dataset['text']
 
     # Initialize vocabulary with special tokens
